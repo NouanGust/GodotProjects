@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://kxu80i6vfoge"]
+[gd_scene load_steps=6 format=3 uid="uid://kxu80i6vfoge"]
 
 [ext_resource type="PackedScene" uid="uid://b86ft6frfpr4v" path="res://objects/box_regular.tscn" id="1_0end4"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_djwuy"]
 [ext_resource type="PackedScene" uid="uid://bw22u8mi0iirh" path="res://objects/box_bouncy.tscn" id="2_uboha"]
+[ext_resource type="PackedScene" uid="uid://c63alek28ojt" path="res://objects/box_heavy.tscn" id="4_r5mjq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0v6p"]
 size = Vector2(1152, 50)
@@ -11,6 +12,7 @@ size = Vector2(1152, 50)
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_djwuy")
+object_templates = Array[PackedScene]([ExtResource("1_0end4"), ExtResource("2_uboha"), ExtResource("4_r5mjq")])
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 1152.0

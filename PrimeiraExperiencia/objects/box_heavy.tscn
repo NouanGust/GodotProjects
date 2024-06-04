@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c63alek28ojt"]
+
+[ext_resource type="PackedScene" uid="uid://b86ft6frfpr4v" path="res://objects/box_regular.tscn" id="1_b8tti"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2paj4"]
+
+[node name="Box_regular" instance=ExtResource("1_b8tti")]
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_2paj4")
+gravity_scale = 1.4
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(1, 1)
+
+[node name="ColorRect" parent="CollisionShape2D" index="0"]
+offset_right = 48.0
+offset_bottom = 48.0
+color = Color(0.976218, 0.810876, 0.178021, 1)
