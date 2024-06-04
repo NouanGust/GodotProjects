@@ -2,8 +2,18 @@ class_name Player
 
 extends CharacterBody2D
 
+@export_category("Movement")
 @export var speed: float = 3
+
+@export_category("Sword")
 @export var sword_damage: int = 2
+
+@export_category("Ritual")
+@export var ritual_damage: int = 1
+@export var ritual_interval: float = 30
+@export var ritual_scene: PackedScene
+
+@export_category("Life")
 @export var health: int = 100
 @export var max_health:int = 100
 @export var death_prefab: PackedScene
@@ -19,6 +29,7 @@ var was_running: bool = false
 var is_attacking: bool = false
 var attack_cooldown: float = 0.0
 var hitbox_cooldown: float = 0.0
+var ritual_colldown: float = 0.0
 
 # Uma função que é chamada a cada frame do jogo
 func _process(delta: float) -> void:
@@ -44,6 +55,9 @@ func _process(delta: float) -> void:
 	
 	# Processar dano
 	update_hitbox_detection(delta)
+	
+	# Ritual
+	update_ritual(delta)
 
 # Uma função ligada a física do jogo 
 func _physics_process(_delta: float) -> void:
@@ -134,6 +148,18 @@ func deal_damage_to_enemies() -> void:
 			if dot_product >= 0.3:
 				# Dar dano
 				enemy.damage(sword_damage)
+
+func update_ritual(delta: float) -> void:
+	# Atualizar temporizador
+	ritual_colldown -= delta
+	if ritual_colldown > 0: return
+	# Resetar temporizador
+	ritual_colldown = ritual_interval
+	
+	# Criar ritual
+	var ritual = ritual_scene.instantiate()
+	ritual.damage_amount = ritual_damage
+	add_child(ritual)
 
 func update_hitbox_detection(delta: float) -> void:
 	# Temporizador
