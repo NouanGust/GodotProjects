@@ -10,6 +10,9 @@ var time: float = 0.0
 
 
 func _process(delta: float) -> void:
+	# Verificando se o jogo acabou
+	if GameManager.is_game_over : return
+	
 	time += delta
 	
 	# Linha Verde -- Dificuldade por minuto -- Dificuldade Linear

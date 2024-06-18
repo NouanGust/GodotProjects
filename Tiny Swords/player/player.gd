@@ -41,6 +41,7 @@ signal meat_collected(value:int)
 func _ready():
 	# Criando o player no game manager
 	GameManager.player = self
+	meat_collected.connect(func (): GameManager.meat_counter += 1)
 
 # Uma função que é chamada a cada frame do jogo
 func _process(delta: float) -> void:
@@ -221,6 +222,9 @@ func heal(amount: int) -> int:
 	return health
 
 func die() -> void:
+	# Informando que o jogo acabou
+	GameManager.end_game()
+	
 	if death_prefab:
 		var death_object = death_prefab.instantiate()
 		death_object.position = position

@@ -11,6 +11,9 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	# Verificando se o jogo acabou
+	if GameManager.is_game_over : return
+	
 	# Checando a posição e calculando a direção
 	var player_position = GameManager.player_position
 	var difference = player_position - enemy.position
