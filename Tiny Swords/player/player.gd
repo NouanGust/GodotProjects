@@ -41,7 +41,7 @@ signal meat_collected(value:int)
 func _ready():
 	# Criando o player no game manager
 	GameManager.player = self
-	meat_collected.connect(func (): GameManager.meat_counter += 1)
+	meat_collected.connect(func (value:int): GameManager.meat_counter += 1)
 
 # Uma função que é chamada a cada frame do jogo
 func _process(delta: float) -> void:

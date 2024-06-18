@@ -53,7 +53,10 @@ func die() -> void:
 		var death_object = death_prefab.instantiate()
 		death_object.position = position
 		get_parent().add_child(death_object)
-		
+	
+	# Incrementar contador
+	GameManager.monsters_defeated_counter += 1
+	
 	# Drops
 	if randf() <= drop_chance:
 		drop_item()

@@ -11,7 +11,7 @@ var restart_cooldown: float
 func _ready():
 	# Definindo valores dos labels
 	time_label.text = GameManager.time_elapsed_string
-	monster_label.text = str(GameManager.meat_counter)
+	monster_label.text = str(GameManager.monsters_defeated_counter)
 	
 	# Definindo valor do cooldown
 	restart_cooldown = restart_delay
