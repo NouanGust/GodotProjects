@@ -1,13 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://dlv7ucjkgbip8"]
+[gd_scene load_steps=20 format=3 uid="uid://dlv7ucjkgbip8"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_73y65"]
 [ext_resource type="Texture2D" uid="uid://dy0u8284gl4o3" path="res://addons/Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="1_jugsw"]
 [ext_resource type="PackedScene" uid="uid://dgojkpws6lvu5" path="res://misc/big_skull.tscn" id="2_3iodx"]
 [ext_resource type="PackedScene" uid="uid://bygfe5rwrqccf" path="res://misc/ritual.tscn" id="2_ogqvt"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kn3dd"]
-radius = 18.0
-height = 58.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_jvwjw"]
+radius = 13.0
 
 [sub_resource type="Animation" id="Animation_0l4ru"]
 length = 0.001
@@ -201,6 +200,12 @@ radius = 111.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_hmywk"]
 radius = 47.0425
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05psp"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6piix"]
+bg_color = Color(1, 0, 0, 1)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_73y65")
@@ -216,8 +221,8 @@ hframes = 6
 vframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -31)
-shape = SubResource("CapsuleShape2D_kn3dd")
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_jvwjw")
 debug_color = Color(0, 0.6, 0.701961, 0.168627)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -239,3 +244,13 @@ debug_color = Color(0.664109, 0.345874, 0.94575, 0)
 position = Vector2(-1, -31)
 shape = SubResource("CircleShape2D_hmywk")
 debug_color = Color(0.945098, 0, 0, 0.0784314)
+
+[node name="HealthProgressBar" type="ProgressBar" parent="."]
+offset_left = -44.0
+offset_top = 7.0
+offset_right = 44.0
+offset_bottom = 15.0
+theme_override_styles/background = SubResource("StyleBoxFlat_05psp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6piix")
+rounded = true
+show_percentage = false

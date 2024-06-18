@@ -1,23 +1,34 @@
+class_name MobSpawner
 extends Node2D
 
 @export var creatures: Array[PackedScene]
-@export var mobs_per_minute: float = 60.0
+var mobs_per_minute: float = 60.0
 
 @onready var path_follow_2d: PathFollow2D = %PathFollow2D
 
-var colldown: float = 0.0
+var cooldown: float = 0.0
 
 func _process(delta: float):
 	# Temporizador (colldown)
-	colldown -= delta
-	if colldown > 0: return
+	cooldown -= delta
+	if cooldown > 0: return
 	
 	# Freqência: Criaturas por minuto (CPM - MPM)
 	# 60 criaturas/min = 1 criatura por seg
 	# 120 criaturas/min = 2 criaturas por seg
 	# intervalo em segundos entre criaturas => 60 / frequência
 	var interval = 60.0 / mobs_per_minute
-	colldown = interval
+	cooldown = interval
+	
+	# Checar se o ponto é valido
+	var point = get_point()
+	var world_state = get_world_2d().direct_space_state
+	var parameters = PhysicsPointQueryParameters2D.new()
+	parameters.position = point
+	parameters.collision_mask = 0b1000
+	var result = world_state.intersect_point(parameters, 1)
+	if not result.is_empty(): return 
+	
 	
 	# Intanciar uma criatura aleatória
 	# Escolher uma criatura aleatória 
@@ -28,7 +39,7 @@ func _process(delta: float):
 	# Intanciar a cena
 	# Por na posição certa
 	var creature = creature_scene.instantiate()
-	creature.global_position = get_point()
+	creature.global_position = point
 	
 	# definir o parent
 	get_parent().add_child(creature)

@@ -2,6 +2,7 @@ class_name Player
 
 extends CharacterBody2D
 
+# Variáveis exportadas
 @export_category("Movement")
 @export var speed: float = 3
 
@@ -18,10 +19,12 @@ extends CharacterBody2D
 @export var max_health:int = 100
 @export var death_prefab: PackedScene
 
+# Variáveis OnReady
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sword_area: Area2D = $SwordArea
 @onready var hitbox_area: Area2D = $HitboxArea
+@onready var health_progress_bar: ProgressBar = $HealthProgressBar
 
 var input_vector: Vector2 = Vector2(0,0)
 var is_running: bool = false
@@ -30,6 +33,14 @@ var is_attacking: bool = false
 var attack_cooldown: float = 0.0
 var hitbox_cooldown: float = 0.0
 var ritual_colldown: float = 0.0
+
+# Signals
+
+signal meat_collected(value:int)
+
+func _ready():
+	# Criando o player no game manager
+	GameManager.player = self
 
 # Uma função que é chamada a cada frame do jogo
 func _process(delta: float) -> void:
@@ -58,6 +69,10 @@ func _process(delta: float) -> void:
 	
 	# Ritual
 	update_ritual(delta)
+	
+	# Atualizar Health Bar
+	health_progress_bar.max_value = max_health
+	health_progress_bar.value = health
 
 # Uma função ligada a física do jogo 
 func _physics_process(_delta: float) -> void:

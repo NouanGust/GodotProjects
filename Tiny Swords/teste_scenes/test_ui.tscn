@@ -1,84 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://u5stc5gsl2l"]
+[gd_scene load_steps=7 format=3 uid="uid://u5stc5gsl2l"]
 
 [ext_resource type="PackedScene" uid="uid://dlv7ucjkgbip8" path="res://player/player.tscn" id="1_pyd0o"]
-[ext_resource type="Texture2D" uid="uid://ei728ht0nh7d" path="res://addons/Tiny Swords (Update 010)/UI/Banners/Banner_Horizontal.png" id="2_6y0hn"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mhj27"]
-texture = ExtResource("2_6y0hn")
-texture_margin_left = 34.0
-texture_margin_top = 17.0
-texture_margin_right = 32.0
-texture_margin_bottom = 44.0
-axis_stretch_horizontal = 2
-axis_stretch_vertical = 2
-region_rect = Rect2(30.1919, 47.3081, 130.393, 124.805)
-
-[sub_resource type="LabelSettings" id="LabelSettings_ebqfo"]
-font_size = 24
-font_color = Color(0, 0, 0, 1)
+[ext_resource type="PackedScene" uid="uid://c85o4ib0p6sqy" path="res://ui/game_ui.tscn" id="2_hnxbn"]
+[ext_resource type="PackedScene" uid="uid://cax8dwopn8chh" path="res://enemies/sheep.tscn" id="3_onvx8"]
+[ext_resource type="PackedScene" uid="uid://bu5qjjxv5ghbj" path="res://enemies/goblin.tscn" id="4_yi114"]
+[ext_resource type="PackedScene" uid="uid://bcd41bsttuxo5" path="res://enemies/pawn.tscn" id="5_r7rfx"]
+[ext_resource type="PackedScene" uid="uid://dn3psqyysrn1s" path="res://misc/meat.tscn" id="6_p4op1"]
 
 [node name="TestUi" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_pyd0o")]
-position = Vector2(615, 414)
+position = Vector2(731, 396)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="GameUI" parent="." instance=ExtResource("2_hnxbn")]
 
-[node name="Panel2" type="Panel" parent="CanvasLayer"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -349.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 112.0
-grow_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxTexture_mhj27")
+[node name="Sheep" parent="." instance=ExtResource("3_onvx8")]
+position = Vector2(997, 201)
 
-[node name="MeatLabel" type="Label" parent="CanvasLayer/Panel2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 42.5
-offset_top = -29.0
-offset_right = 135.5
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "15 Meat
-"
-label_settings = SubResource("LabelSettings_ebqfo")
+[node name="Goblin" parent="." instance=ExtResource("4_yi114")]
+position = Vector2(37, 107)
 
-[node name="GoldLabel" type="Label" parent="CanvasLayer/Panel2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -131.5
-offset_top = -30.0
-offset_right = 4.5
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "45,000 Gold
-"
-label_settings = SubResource("LabelSettings_ebqfo")
+[node name="Sheep2" parent="." instance=ExtResource("3_onvx8")]
+position = Vector2(31, 685)
 
-[node name="TimerLabel" type="Label" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -46.0
-offset_top = 28.0
-offset_right = 47.0
-offset_bottom = 51.0
-grow_horizontal = 2
-text = "08:50
-"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Pawn" parent="." instance=ExtResource("5_r7rfx")]
+position = Vector2(580, 694)
+
+[node name="Sheep3" parent="." instance=ExtResource("3_onvx8")]
+position = Vector2(1113, 642)
+
+[node name="Meat" parent="." instance=ExtResource("6_p4op1")]
+position = Vector2(321, 469)
+
+[node name="Meat2" parent="." instance=ExtResource("6_p4op1")]
+position = Vector2(85, 398)
+
+[node name="Meat3" parent="." instance=ExtResource("6_p4op1")]
+position = Vector2(324, 586)
