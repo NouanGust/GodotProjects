@@ -6,6 +6,7 @@
 
 [sub_resource type="SystemFont" id="SystemFont_a8lgp"]
 font_weight = 999
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_o80rw"]
 font = SubResource("SystemFont_a8lgp")
@@ -26,6 +27,7 @@ region_rect = Rect2(30.1919, 47.3081, 130.393, 124.805)
 [sub_resource type="SystemFont" id="SystemFont_1g27w"]
 font_names = PackedStringArray("Cascadia Mono")
 font_weight = 999
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_ebqfo"]
 font = SubResource("SystemFont_1g27w")
