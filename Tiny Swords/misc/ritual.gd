@@ -4,7 +4,7 @@ extends Node2D
 
 # Pegar uma Area 2d com colisão
 @onready var area2d: Area2D = $Area2D
-
+@onready var ritual_fx: AudioStreamPlayer = $RitualFx
 func deal_damage():
 	# get_overlaping_bodies
 	var bodies = area2d.get_overlapping_bodies()
@@ -15,4 +15,6 @@ func deal_damage():
 			var enemy: Enemy = body
 			# Dar dano
 			enemy.damage(damage_amount)
+			# Tocar som
+			ritual_fx.play()
 	print("Ritual Damage")

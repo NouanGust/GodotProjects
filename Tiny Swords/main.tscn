@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://4ei7sengm88t"]
+[gd_scene load_steps=26 format=3 uid="uid://4ei7sengm88t"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_nlchu"]
 [ext_resource type="PackedScene" uid="uid://dlv7ucjkgbip8" path="res://player/player.tscn" id="1_xn4lx"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b2w2r66or43rk" path="res://addons/Tiny Swords (Update 010)/Deco/11.png" id="10_b2wk7"]
 [ext_resource type="Script" path="res://systems/difficulty_system.gd" id="10_lv2rn"]
 [ext_resource type="PackedScene" uid="uid://d0veso6w7rmle" path="res://misc/tree.tscn" id="12_ut3ag"]
+[ext_resource type="AudioStream" uid="uid://yjpx5o70ad4g" path="res://sounds/527321__zhr__village-main-theme.mp3" id="15_x2jd1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bhmly"]
 texture = ExtResource("5_mmata")
@@ -306,3 +307,8 @@ position = Vector2(2763, 1785)
 
 [node name="Tree46" parent="Trees" instance=ExtResource("12_ut3ag")]
 position = Vector2(800, 509)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_x2jd1")
+volume_db = -2.0
+autoplay = true

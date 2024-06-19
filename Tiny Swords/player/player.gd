@@ -25,6 +25,7 @@ extends CharacterBody2D
 @onready var sword_area: Area2D = $SwordArea
 @onready var hitbox_area: Area2D = $HitboxArea
 @onready var health_progress_bar: ProgressBar = $HealthProgressBar
+@onready var attack_sound: AudioStreamPlayer = $SwordFx
 
 var input_vector: Vector2 = Vector2(0,0)
 var is_running: bool = false
@@ -139,11 +140,16 @@ func attack() -> void:
 	# Tocar animação
 	animation_player.play("attack_side_1")
 	
+	
+	
 	# Configurar temporizador
 	attack_cooldown = 0.6
 	
 	# Marcar ataque
 	is_attacking = true
+	
+	# Tocar som
+	#play_attack_fx()
 
 func deal_damage_to_enemies() -> void:
 	# Encontrar inimigos na area da espada
@@ -234,5 +240,8 @@ func die() -> void:
 	print("Player Morreu!")
 	queue_free()
 
+func play_attack_fx() -> void:
+	if is_attacking:
+		attack_sound.play()
 
 
