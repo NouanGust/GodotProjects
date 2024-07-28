@@ -16,8 +16,9 @@ func _on_start_btn_pressed():
 
 
 func _on_options_btn_pressed():
+	get_tree().change_scene_to_file("res://ui/howToPlay.tscn")
 	pass # Replace with function body.
 
 
 func _on_quit_btn_pressed():
-	pass # Replace with function body.
+	get_tree().quit()
