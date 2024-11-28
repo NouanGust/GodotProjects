@@ -306,6 +306,7 @@ theme_override_font_sizes/font_size = 64
 text = "COMEÇAR"
 
 [node name="OptionsBtn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_uoyis")
 theme_override_font_sizes/font_size = 64

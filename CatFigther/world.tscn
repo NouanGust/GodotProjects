@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://chnqnnr1s51nd"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_o3pdw"]
+[ext_resource type="Texture2D" uid="uid://b56smsoseosb0" path="res://assets/300 Characters Free! 128x128/V1.2/1.png" id="2_j1nn2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vw84q"]
+radius = 39.0512
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_o3pdw")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_j1nn2")
+region_rect = Rect2(56, 64, 0, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_vw84q")
+debug_color = Color(0.240102, 0.561213, 0.808968, 0.42)
